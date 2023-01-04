@@ -1,0 +1,31 @@
+PROCEDURE dot_product (var ps:INTEGER v1,v2:ARRAY_OF_INTEGER)
+VAR
+    i:=INTEGER
+    ps:=0
+BEGIN
+    IF (v2.length<>v1.length) THEN
+        WRITE("UNABLE TO CALCULATE THE PRODUCT")
+        return ps:=Nan
+    END_IF
+    FOR i FROM 0 TO v1.length-1 STEP 1 DO
+        ps:=ps+v1[i]*v2[i]
+    END_FOR
+    return ps
+END
+
+ALGORITHM khayreddine
+VAR
+    vectors:=ARRAY_OF_INTEGER
+    ps:=INTEGER
+    i,j:=INTEGER
+BEGIN
+    FOR i FROM 0 TO vectors.length-2 STEP 1  DO
+     FOR j FROM i+1 TO vectors.length-1 STEP 1  DO
+        dot_product(ps,vectors[i],vectors[j])
+        IF (ps=0) THEN
+            WRITE(vectors[i],"and",vectors[j],"are orthogonal")
+        END_IF
+     END_FOR
+    END_FOR
+   
+END
